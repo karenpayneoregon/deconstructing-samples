@@ -1,3 +1,5 @@
-# Introduction
+![img](assets/csharpDeconstructing.png)
 
-**TODO** Work in progress
+# Deconstructing tuples and other types (C#)
+
+

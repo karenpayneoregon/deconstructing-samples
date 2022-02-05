@@ -7,7 +7,7 @@ Change forms in Program.cs to try different examples.
 # Requires 
 
 - Microsoft Visual Studio 2019 or higher
-- .NET 5 Framework or higher
+- .NET 5 Framework or higher (for these code samples)
 
 
 # Forms

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<LangVersion>9.0</LangVersion>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ApplicationIcon>csharp1.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Scripts\Script.sql" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Scripts\Script.sql" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\WindowsFormsLibrary\WindowsFormsLibrary.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="people.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

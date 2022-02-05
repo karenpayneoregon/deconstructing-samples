@@ -17,22 +17,25 @@ namespace WindowsFormsCodeSamples.Classes
         /// <param name="peopleList">valid list of <seealso cref="Person"/></param>
         public static void Write(List<Person> peopleList)
         {
+
             File.WriteAllLines(_fileName, peopleList
-                .Select(person => person.Contents)
+                .Select(person => person.Lines)
                 .ToArray());
 
         }
 
         /// <summary>
-        /// Assumes file exists and there are three line per person
+        /// Assumes file exists and there are three line per person.
         ///
         /// chunks array uses index in the select although never used
-        /// Index could be used as a primary key
+        /// Index could be used as a primary key.
         /// </summary>
-        /// <returns>List of <see cref="Person"/></returns>
+        /// <returns>List of <see cref="Person"/> and <seealso cref="Exception"/></returns>
         public static (List<Person>, Exception) Read()
         {
+
             const int chunkSize = 3;
+
             try
             {
                 var contents = File.ReadAllLines(_fileName);
@@ -43,7 +46,7 @@ namespace WindowsFormsCodeSamples.Classes
                     .Select(grp => grp.Select(anonymous => anonymous.Line).ToArray())
                     .ToArray();
 
-                List<Person> result = chunks.Select(item => new Person()
+                var result = chunks.Select(item => new Person()
                 {
                     FirstName = item[0],
                     LastName = item[1],
@@ -51,12 +54,12 @@ namespace WindowsFormsCodeSamples.Classes
                 }).ToList();
 
                 return (result, null);
+
             }
             catch (Exception exception)
             {
                 return (null, exception);
             }
-
         }
     }
 }

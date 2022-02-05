@@ -112,7 +112,7 @@ namespace WindowsFormsCodeSamples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(417, 349);
             this.Controls.Add(this.ChunkWithTuplesButton);
             this.Controls.Add(this.ReadCustomersWithTupleButton);
             this.Controls.Add(this.CustomersDataGridView);

@@ -128,7 +128,9 @@ namespace WindowsFormsCodeSamples
         /// </remarks>
         private void ChunkWithTuplesButton_Click(object sender, EventArgs e)
         {
+            
             var (persons, exception) = FileOperations.Read();
+
             if (exception is null)
             {
                 var (firstName, lastName) = persons.FirstOrDefault();

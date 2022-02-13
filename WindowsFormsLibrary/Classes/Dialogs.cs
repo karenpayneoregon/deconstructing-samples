@@ -30,7 +30,24 @@ namespace WindowsFormsLibrary.Classes
             TaskDialog.ShowDialog(owner, page);
 
         }
-   
+        public static void Information(Control owner, string heading, string footNote, string buttonText = "Ok")
+        {
+
+            TaskDialogButton okayButton = new(buttonText);
+
+            TaskDialogPage page = new()
+            {
+                Caption = "Information",
+                SizeToContent = true,
+                Heading = heading,
+                Footnote = new TaskDialogFootnote() { Text = footNote },
+                Icon = new TaskDialogIcon(Properties.Resources.blueInformation_32),
+                Buttons = new TaskDialogButtonCollection() { okayButton }
+            };
+
+            TaskDialog.ShowDialog(owner, page);
+
+        }
         /// <summary>
         /// Dialog to ask a question
         /// </summary>
@@ -69,6 +86,38 @@ namespace WindowsFormsLibrary.Classes
                 Buttons = buttons
             };
 
+
+            TaskDialogButton result = TaskDialog.ShowDialog(page);
+
+            return (DialogResult)result.Tag == DialogResult.Yes;
+
+        }
+
+        public static bool Question(string caption, string heading, string footNote)
+        {
+
+            TaskDialogButton yesButton = new("Yes") { Tag = DialogResult.Yes };
+            TaskDialogButton noButton = new("No") { Tag = DialogResult.No };
+
+            TaskDialogButtonCollection buttons = new()
+            {
+                yesButton,
+                noButton
+            };
+
+            TaskDialogPage page = new()
+            {
+                Caption = caption,
+                SizeToContent = true,
+                Heading = heading,
+                Icon = TaskDialogIcon.Information,
+                Buttons = buttons
+            };
+
+            if (!string.IsNullOrWhiteSpace(footNote))
+            {
+                page.Footnote = new TaskDialogFootnote() { Text = footNote };
+            }
 
             TaskDialogButton result = TaskDialog.ShowDialog(page);
 

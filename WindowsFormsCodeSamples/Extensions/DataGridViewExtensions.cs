@@ -35,17 +35,5 @@ namespace WindowsFormsCodeSamples.Extensions
 
         }
 
-
-        public static List<DataGridViewRow> GetCheckedRows(this DataGridView sender, string columnName)
-            => sender.Rows.Cast<DataGridViewRow>().Where(row => !row.IsNewRow && Convert.ToBoolean(row.Cells[columnName].Value)).ToList();
-
-        /// <summary>
-        /// Create a string array from DataGridView rows using by default a comma
-        /// between cell data.
-      
-
-
-
-
     }
 }

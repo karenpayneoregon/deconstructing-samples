@@ -24,8 +24,9 @@ namespace Switches.Classes
             await using var context = new SchoolContext();
 
             var test = await context.Person
-                .Include(x => x.StudentGrade)
-                .ThenInclude(x => x.Course).FirstOrDefaultAsync(x => x.PersonID == personIdentifier);
+                .Include(person => person.StudentGrade)
+                .ThenInclude(studentGrade => studentGrade.Course)
+                .FirstOrDefaultAsync(person => person.PersonID == personIdentifier);
 
         }
 
@@ -63,7 +64,7 @@ namespace Switches.Classes
                     _ => "unknown",
                 };
 
-                IteratePersonGrades?.Invoke(new()
+                IteratePersonGrades?.Invoke(new PersonGrades
                 {
                     PersonID = studentEntity.PersonID,
                     FirstName = studentEntity.FirstName,

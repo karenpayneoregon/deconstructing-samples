@@ -12,31 +12,23 @@ namespace Switches.Models
     public partial class Person
     {
 
-        public static Expression<Func<Person, PersonEntity>> Projection
-        {
-            get
+        public static Expression<Func<Person, PersonEntity>> Projection =>
+            (student) => new PersonEntity()
             {
-                return (student) => new PersonEntity()
-                {
-                    PersonID = student.PersonID,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName,
-                    Grades = student.StudentGrade
-                };
-            }
-        }
-        public static Expression<Func<Person, PersonEntity>> ListBoxSource
-        {
-            get
+                PersonID = student.PersonID,
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                Grades = student.StudentGrade
+            };
+
+        public static Expression<Func<Person, PersonEntity>> ListBoxSource =>
+            (student) => new PersonEntity()
             {
-                return (student) => new PersonEntity()
-                {
-                    PersonID = student.PersonID,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName
-                };
-            }
-        }
+                PersonID = student.PersonID,
+                FirstName = student.FirstName,
+                LastName = student.LastName
+            };
+
         public void Deconstruct(out int id, out string firstName, out string lastName)
         {
             id = PersonID;

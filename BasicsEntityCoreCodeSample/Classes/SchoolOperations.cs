@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -9,6 +10,7 @@ using DeconstructCodeSamples.Classes;
 using Microsoft.EntityFrameworkCore;
 using Switches.Data;
 using Switches.Models;
+using Newtonsoft.Json;
 
 // ReSharper disable once CheckNamespace - DO NOT change
 namespace Switches.Classes
@@ -33,7 +35,10 @@ namespace Switches.Classes
         public static async Task<List<PersonEntity>> GetStudents()
         {
             await using var context = new SchoolContext();
-            return await context.Person.Select(Person.ListBoxSource).OrderBy(person => person.LastName).ToListAsync();
+            var results = await context.Person.Select(Person.ListBoxSource).OrderBy(person => person.LastName).ToListAsync();
+            string json = JsonConvert.SerializeObject(results, Formatting.Indented);
+            await File.WriteAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Students.json"), json);
+            return results;
         }
 
         /// <summary>

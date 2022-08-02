@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DeconstructCodeSamples.Models;
 using SomeThirdPartyLibrary.Classes;
 
+
 namespace DeconstructCodeSamples.Classes
 {
     class CustomerOperations

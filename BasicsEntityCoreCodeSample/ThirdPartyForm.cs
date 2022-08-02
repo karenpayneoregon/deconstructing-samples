@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using DeconstructCodeSamples.Classes;
 using DeconstructCodeSamples.Extensions;
 using DeconstructCodeSamples.Models;
+using Newtonsoft.Json;
 using SomeThirdPartyLibrary.Classes;
 
 namespace DeconstructCodeSamples
@@ -22,9 +24,13 @@ namespace DeconstructCodeSamples
             Shown += OnShown;
         }
 
-        private void OnShown(object? sender, EventArgs e)
+        private void OnShown(object sender, EventArgs e)
         {
-            CustomerListBox.DataSource = CustomerOperations.CustomerItems();
+            var customerItems = CustomerOperations.CustomerItems();
+            string json = JsonConvert.SerializeObject(customerItems, Formatting.Indented);
+            File.WriteAllText("CustomerItems.json", json);
+            CustomerListBox.DataSource = customerItems;
+            //CustomerListBox.DataSource = CustomerOperations.CustomerItems();
         }
 
         private int CurrentIdentifier() 

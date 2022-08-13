@@ -236,6 +236,7 @@ namespace DeconstructCodeSamples.Extensions
 # Deconstucting other code
 
 
+
 # Notes
 
 - If using a framework prior to 4.8, you will need the following NuGet package [System.ValueTuple](https://www.nuget.org/packages/System.ValueTuple), otherwise the package is included in new projects

@@ -166,11 +166,9 @@ public class PersonEntity
     {
         id = PersonID;
         fullName = FullName;
-
     }
     public void Deconstruct(out int id, out string firstName, string lastName, ICollection<StudentGrade> grades)
     {
-
         id = PersonID;
         firstName = FirstName;
         lastName = LastName;
@@ -217,7 +215,7 @@ namespace DeconstructCodeSamples.Extensions
     public static class ThirdPartyExtensions
     {
         /// <summary>
-        /// 
+        ///  Extension for third party class
         /// </summary>
         /// <param name="customer"></param>
         /// <param name="id">customer key</param>

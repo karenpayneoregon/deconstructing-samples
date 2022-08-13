@@ -1,6 +1,6 @@
 ﻿{
    "CodeGenerationMode": 0,
-   "ContextClassName": "NorthContext",
+   "ContextClassName": "BooksContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
@@ -14,31 +14,11 @@
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
-         "Name": "[dbo].[Categories]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Contacts]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[ContactType]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Countries]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Customers]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Products]",
+         "Name": "[dbo].[Book]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "6X2V0G2\\SQLEXPRESS.NorthWind2022",
+   "UiHint": "6X2V0G2\\SQLEXPRESS.BookCatalog",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDbContextSplitting": true,

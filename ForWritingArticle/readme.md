@@ -235,6 +235,51 @@ namespace DeconstructCodeSamples.Extensions
 
 # Deconstucting other code
 
+Let's look at a simple dictionary
+
+```csharp
+var peopleDictionary = new Dictionary<string, int>
+{
+    ["Mary"] = 32, 
+    ["Frank"] = 17
+};
+```
+
+Convental method to iterate the key and values.
+
+```csharp
+foreach (var pair in peopleDictionary)
+{
+    Console.WriteLine($"{pair.Key} is {pair.Value} years old");
+}
+```
+
+Minor issue when looking at the code is say the dictionary definition is not visible, it can be difficult to tell what key and value are, and in a little bit I will drive this home with a more complex example using a switch and grouping.
+
+Next level, deconstruct and provide meaningful variable names.
+
+```csharp
+foreach (var (name, age) in peopleDictionary)
+{
+    Console.WriteLine($"{name} is {age} years old");
+}
+```
+
+The above is easy to understand. Now for those who like the cool factor here you go.
+
+```csharp
+foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
+{
+    Console.WriteLine($"{name} is {age} years old.");
+}
+```
+
+Which to use? the second example, it's clear and easy to read.
+
+
+
+
+
 
 
 # Notes

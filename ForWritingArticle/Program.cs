@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using ForWritingArticle.Classes;
 using ForWritingArticle.Data;
 using ForWritingArticle.Models;
 using Microsoft.EntityFrameworkCore;
@@ -11,48 +13,37 @@ namespace ForWritingArticle
     {
         static async Task Main(string[] args)
         {
-            var (success, customers, _ ) = await DataOperations.GetCustomersList();
+            //await NorthOperations.NorthCustomers();
+            //await BookOperations.GroupBooks();
 
-            if (success)
+            await Task.Delay(0);
+
+            var peopleDictionary = new Dictionary<string, int>
             {
-                foreach (var customer in customers)
-                {
-                    Console.WriteLine(customer.CompanyName);
-                }
-            }
-            else
+                ["Mary"] = 32, 
+                ["Frank"] = 17
+            };
+
+            foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
             {
-                Console.WriteLine("Could not read data");
+                Console.WriteLine($"{name} is {age} years old.");
             }
+
+            Console.WriteLine();
+            foreach (var pair in peopleDictionary)
+            {
+                Console.WriteLine($"{pair.Key} is {pair.Value} years old");
+            }
+
+
+            Console.WriteLine();
+            foreach (var (name, age) in peopleDictionary)
+            {
+                Console.WriteLine($"{name} is {age} years old");
+            }
+
+            Console.ReadLine();
         }
+
     }
-
-
-
-    public class DataOperations
-    {
-        public static async Task<(bool success, List<Customers> customers, Exception exception)> GetCustomersList()
-        {
-            try
-            {
-                await using NorthContext context = new();
-                return 
-                    (
-                        true,
-                        await context.
-                            Customers
-                            .Include(c => c.ContactTypeIdentifierNavigation)
-                            .ToListAsync(), 
-                        null
-                    );
-            }
-            catch (Exception ex)
-            {
-                // write to error log
-                return (false,null, ex);
-            }
-        }
-    }
-
-    
 }

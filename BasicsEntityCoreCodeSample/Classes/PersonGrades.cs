@@ -10,7 +10,7 @@
             firstName = FirstName;
             lastName = LastName;
         }
-        public void Deconstruct(out int id, out string firstName, out string lastName)
+        public new void Deconstruct(out int id, out string firstName, out string lastName)
         {
             id = PersonID;
             firstName = FirstName;

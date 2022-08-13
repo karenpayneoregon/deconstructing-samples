@@ -276,7 +276,7 @@ foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
 }
 ```
 
-Which to use? the second example, it's clear and easy to read.
+:question: Which to use? the second example, it's clear and easy to read.
 
 
 

@@ -13,34 +13,11 @@ namespace ForWritingArticle
     {
         static async Task Main(string[] args)
         {
-            //await NorthOperations.NorthCustomers();
-            //await BookOperations.GroupBooks();
-
             await Task.Delay(0);
 
-            var peopleDictionary = new Dictionary<string, int>
-            {
-                ["Mary"] = 32, 
-                ["Frank"] = 17
-            };
-
-            foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
-            {
-                Console.WriteLine($"{name} is {age} years old.");
-            }
-
-            Console.WriteLine();
-            foreach (var pair in peopleDictionary)
-            {
-                Console.WriteLine($"{pair.Key} is {pair.Value} years old");
-            }
-
-
-            Console.WriteLine();
-            foreach (var (name, age) in peopleDictionary)
-            {
-                Console.WriteLine($"{name} is {age} years old");
-            }
+            //await NorthOperations.NorthCustomers();
+            //await BookOperations.GroupBooks();
+            DictionaryExamples.PeopleOptions();
 
             Console.ReadLine();
         }

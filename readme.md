@@ -1,5 +1,9 @@
 ![img](assets/csharpDeconstructing.png)
 
+# Overview
+
+In this article with code samples provides additional ways to return data from methods, iterating foreach statements, how to work with date time objects to have cleaner code. An important consideration is every developer has their own style of coding and with that keep an open mind, if something learned looks inviting but not your style than modify the code to suite you’re or a team’s style.
+
 # The art of Deconstructing
 
 What is deconstruct in C#?

@@ -355,7 +355,61 @@ foreach ((string pricingCategory, IGrouping<string, Book> bookGrouping) in resul
 }
 ```
 
+# Records
 
+We can deconstruct `records` also, given the following record `Deconstruct` provides us a way to return all information in a compact form.
+
+```csharp
+public record Person()
+{
+    public int Id { get; init; }
+    public string Firstname { get; init; }
+    public string Lastname { get; init; }
+    public string FullName => $"{Firstname} {Lastname}";
+
+    public override string ToString() => $"{Id} {FullName}";
+
+    public void Deconstruct(out int id, out string fullName)
+        => (id, fullName) = (Id, FullName);
+
+}
+```
+
+Usage with mocked data using [Bogus](https://www.nuget.org/packages/Bogus) NuGet package.
+
+```csharp
+namespace ForWritingArticle.Classes
+{
+    public class Operations
+    {
+        public static List<Person> PeopleList(int count = 5)
+        {
+            var faker = new Faker<Person>()
+                .WithRecord()
+                .RuleFor(p => p.Id, f => f.IndexVariable++)
+                .RuleFor(p => p.Lastname, f => f.Person.LastName)
+                .RuleFor(p => p.Firstname, f => f.Person.FirstName);
+
+            return faker.Generate(count);
+        }
+
+        public static void PeopleDeconstruct()
+        {
+            var list = PeopleList();
+
+            foreach (Person person in list)
+            {
+                var (id, fullName) = person;
+                Console.WriteLine($"{id,-4}{fullName}");
+            }
+
+        }
+    }
+}
+
+```
+
+---
 
 # Notes
 

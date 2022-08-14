@@ -20,7 +20,7 @@ namespace ForWritingArticle
             //await BookOperations.GroupBooks();
             //await NorthOperations.NorthCustomers();
             ;
-            var people = Operations.PeopleList();
+            Operations.PeopleDeconstruct();
 
             Console.ReadLine();
         }

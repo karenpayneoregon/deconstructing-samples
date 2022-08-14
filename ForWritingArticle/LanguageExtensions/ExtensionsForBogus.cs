@@ -10,5 +10,6 @@ namespace ForWritingArticle.LanguageExtensions
             faker.CustomInstantiator( _ => FormatterServices.GetUninitializedObject(typeof(T)) as T);
             return faker;
         }
+
     }
 }

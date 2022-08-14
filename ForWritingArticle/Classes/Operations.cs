@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bogus;
 using ForWritingArticle.LanguageExtensions;
 using Person = ForWritingArticle.Models.Person;
@@ -20,6 +17,18 @@ namespace ForWritingArticle.Classes
                 .RuleFor(p => p.Firstname, f => f.Person.FirstName);
 
             return faker.Generate(count);
+        }
+
+        public static void PeopleDeconstruct()
+        {
+            var list = PeopleList();
+
+            foreach (Person person in list)
+            {
+                var (id, fullName) = person;
+                Console.WriteLine($"{id,-4}{fullName}");
+            }
+
         }
     }
 }

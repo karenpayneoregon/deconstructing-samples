@@ -22,6 +22,7 @@ namespace ForWritingArticle
             
             //Operations.PeopleDeconstruct();
             //Operations.DeconstructDateTimeOffset();
+            Operations.ChunkDateTimeOffset();
 
             Console.ReadLine();
         }

@@ -48,6 +48,14 @@ namespace ForWritingArticle.Classes
             date.Deconstruct(out int day, out int month, out int year);
 
             Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
+
+        }
+
+        public static void ChunkDateTimeOffset()
+        {
+            var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
+            var (day, month, year) = date.Chunk();
+            Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
         }
 
         public static void BreakOutDateParts()

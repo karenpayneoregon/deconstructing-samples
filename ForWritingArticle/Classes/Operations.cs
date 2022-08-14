@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Bogus;
+using ForWritingArticle.LanguageExtensions;
 using Person = ForWritingArticle.Models.Person;
 
 namespace ForWritingArticle.Classes
@@ -20,15 +20,6 @@ namespace ForWritingArticle.Classes
                 .RuleFor(p => p.Firstname, f => f.Person.FirstName);
 
             return faker.Generate(count);
-        }
-    }
-
-    public static class ExtensionsForBogus
-    {
-        public static Faker<T> WithRecord<T>(this Faker<T> faker) where T : class
-        {
-            faker.CustomInstantiator(_ => FormatterServices.GetUninitializedObject(typeof(T)) as T);
-            return faker;
         }
     }
 }

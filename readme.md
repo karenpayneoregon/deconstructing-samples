@@ -276,9 +276,75 @@ foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
 
 :question: Which to use? the second example, it's clear and easy to read.
 
+# Dictionary/IGrouping deconstruct
+
+In this example the model where the task is to group by price, Cheap, Medium and Expensive.
+
+```csharp
+public partial class Book
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public decimal? Price { get; set; }
+}
+```
+
+Code to read and group.
+
+```csharp
+var books = await context.Book.ToListAsync();
+
+Dictionary<string, IGrouping<string, Book>> results = books
+    .GroupBy(book => book.Price switch
+    {
+        <= 10 => "Cheap",
+        > 10 and <= 20 => "Medium",
+        _ => "Expensive"
+    })
+    .ToDictionary(gb =>
+            gb.Key,
+        g => g);
+```
+
+Conventional `foreach` where like the prior conventional `foreach` we have is Key and Value which can make understand the code hard.
+
+```csharp
+foreach (KeyValuePair<string, IGrouping<string, Book>> pair in results)
+{
+    Console.WriteLine(pair.Key);
+    foreach (var book in pair.Value)
+    {
+        Console.WriteLine($"\t{book.Title,-25}{book.Price:C0}");
+    }
+}
+```
+
+Using Deconstruct the code is much easier to read.
+
+```csharp
+foreach (var (pricingCategory, bookGrouping) in results)
+{
+    Console.WriteLine(pricingCategory);
+    foreach (var book in bookGrouping)
+    {
+        Console.WriteLine($"\t{book.Title, -25}{book.Price:C0}");
+    }
+}
+```
+
+And we can specify each variable type too.
 
 
-
+```csharp
+foreach ((string pricingCategory, IGrouping<string, Book> bookGrouping) in results)
+{
+    Console.WriteLine(pricingCategory);
+    foreach (var book in bookGrouping)
+    {
+        Console.WriteLine($"\t{book.Title, -25}{book.Price:C0}");
+    }
+}
+```
 
 
 

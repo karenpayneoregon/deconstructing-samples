@@ -15,9 +15,11 @@ namespace ForWritingArticle
         {
             await Task.Delay(0);
 
-            //await NorthOperations.NorthCustomers();
-            //await BookOperations.GroupBooks();
             DictionaryExamples.PeopleOptions();
+            await BookOperations.GroupBooks();
+            //await NorthOperations.NorthCustomers();
+            //OffTheReservation.StarWars();
+
 
             Console.ReadLine();
         }

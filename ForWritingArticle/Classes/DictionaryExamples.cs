@@ -19,12 +19,20 @@ namespace ForWritingArticle.Classes
             }
 
             Console.WriteLine();
-            foreach (var pair in peopleDictionary)
+
+            /*
+             * Conventional foreach using Key and Value
+             */
+            foreach (KeyValuePair<string, int> pair in peopleDictionary)
             {
                 Console.WriteLine($"{pair.Key} is {pair.Value} years old");
             }
             
             Console.WriteLine();
+
+            /*
+             * Here the foreach has been deconstructed using meaningful variable names
+             */
             foreach (var (name, age) in peopleDictionary)
             {
                 Console.WriteLine($"{name} is {age} years old");

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ForWritingArticle.Data;
 using ForWritingArticle.Models;
@@ -18,6 +17,9 @@ namespace ForWritingArticle.Classes
 
             var books = await context.Book.ToListAsync();
 
+            /*
+             * Group Books by price range, convert to a Dictionary
+             */
             Dictionary<string, IGrouping<string, Book>> results = books
                 .GroupBy(book => book.Price switch
                 {
@@ -32,6 +34,9 @@ namespace ForWritingArticle.Classes
 
             AnsiConsole.MarkupLine("[cyan]Conventional foreach[/]");
 
+            /*
+             * Conventional foreach using Key and Value
+             */
             foreach (KeyValuePair<string, IGrouping<string, Book>> pair in results)
             {
                 Console.WriteLine(pair.Key);
@@ -44,7 +49,10 @@ namespace ForWritingArticle.Classes
             Console.WriteLine();
             AnsiConsole.MarkupLine("[yellow]Deconstruct foreach[/]");
 
-            foreach (var (pricingCategory, bookGrouping) in results)
+            /*
+             * Here the foreach has been deconstructed using meaningful variable names
+             */
+            foreach ((string pricingCategory, IGrouping<string, Book> bookGrouping) in results)
             {
                 Console.WriteLine(pricingCategory);
                 foreach (var book in bookGrouping)

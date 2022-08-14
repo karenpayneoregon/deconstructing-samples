@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DictionaryConsoleApp.Models;
 using Microsoft.Extensions.Configuration;
+using Spectre.Console;
 
 namespace DictionaryConsoleApp
 {
@@ -19,6 +20,7 @@ namespace DictionaryConsoleApp
                 recipient.Data.ShortName, recipient => recipient);
 
             // conventional
+            AnsiConsole.MarkupLine("[cyan]Conventional[/]");
             foreach (KeyValuePair<string, Recipient> recipient in dictionary)
             {
                 Console.WriteLine(recipient.Key);
@@ -28,7 +30,9 @@ namespace DictionaryConsoleApp
                 }
             }
 
+            AnsiConsole.WriteLine();
             // deconstruct 
+            AnsiConsole.MarkupLine("[cyan]Deconstruct[/]");
             foreach ((string name, Recipient recipient) in dictionary)
             {
                 Console.WriteLine(name);
@@ -38,8 +42,8 @@ namespace DictionaryConsoleApp
                 }
             }
 
-
-
+            AnsiConsole.WriteLine();
+            AnsiConsole.MarkupLine("Press any [b]key[/] to close");
             Console.ReadLine();
 
         }

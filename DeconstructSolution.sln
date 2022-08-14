@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Useful starter project", "U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryConsoleApp", "DictionaryConsoleApp\DictionaryConsoleApp.csproj", "{534AB982-71BD-4979-AA6A-9327AE4363C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForWritingArticle", "ForWritingArticle\ForWritingArticle.csproj", "{095473AE-D835-4BFB-9C6F-42C47A5AB85F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForWritingArticle", "ForWritingArticle\ForWritingArticle.csproj", "{095473AE-D835-4BFB-9C6F-42C47A5AB85F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

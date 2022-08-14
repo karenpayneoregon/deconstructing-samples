@@ -2,6 +2,15 @@
 
 # The art of Deconstructing
 
+What is deconstruct in C#?
+
+Deconstruction is a process of splitting a variable value into parts and storing them into new variables. 
+
+This could be useful when a variable stores multiple values such as a [Tuple](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples) and different ways to work with `foreach` statements or create language extensions for returning smaller sets of information from third party methods.
+
+Most developers know about how to return informaton with Tuples but many don't know about other benefits which will be gone over in this article.
+
+**Microsoft documentation** Deconstructing tuples and other types [![](assets/Link_16x.png)](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/deconstruct)
 ## Basics
 
 The following shows different ways to return data from a method.

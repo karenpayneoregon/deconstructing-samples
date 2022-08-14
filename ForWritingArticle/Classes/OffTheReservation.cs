@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ForWritingArticle.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace ForWritingArticle.Classes
 {
@@ -25,13 +27,31 @@ namespace ForWritingArticle.Classes
 
             StarWarsCharacter character = hero;
             string ability = Ability(character);
-            Console.WriteLine($"{character.GetType().Name} {ability}");
+            Console.WriteLine($"{character.Name} {ability}");
 
             Console.WriteLine();
 
             character = villain;
             ability = Ability(character);
-            Console.WriteLine($"{character.GetType().Name} {ability}");
+            Console.WriteLine($"{character.Name} {ability}");
+
+        }
+
+        public static string ConfigurationDebugView()
+        {
+            if (File.Exists("appsettings.json"))
+            {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+
+                return configuration.GetDebugView();
+            }
+            else
+            {
+                return null;
+            }
 
         }
     }

@@ -6,6 +6,7 @@ using ForWritingArticle.Classes;
 using ForWritingArticle.Data;
 using ForWritingArticle.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ForWritingArticle
 {
@@ -15,11 +16,11 @@ namespace ForWritingArticle
         {
             await Task.Delay(0);
 
-            DictionaryExamples.PeopleOptions();
-            await BookOperations.GroupBooks();
+            //DictionaryExamples.PeopleOptions();
+            //await BookOperations.GroupBooks();
             //await NorthOperations.NorthCustomers();
-            //OffTheReservation.StarWars();
-
+            ;
+            var people = Operations.PeopleList();
 
             Console.ReadLine();
         }

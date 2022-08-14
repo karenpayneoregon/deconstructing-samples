@@ -11,6 +11,38 @@ This could be useful when a variable stores multiple values such as a [Tuple](ht
 Most developers know about how to return informaton with Tuples but many don't know about other benefits which will be gone over in this article.
 
 **Microsoft documentation** Deconstructing tuples and other types [![](assets/Link_16x.png)](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/deconstruct)
+
+## Warm and fuzzy
+
+Pretty much at one time or another a developer needs to break apart a DateTime or DateTimeOffset as shown below.
+
+```csharp
+var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
+int year = date.Year;
+```
+
+We can deconstruct a DateTime or a DateTimeOffset using an extension method.
+
+```csharp
+public static class Extensions
+{
+    public static void Deconstruct(this DateTimeOffset date, out int day, out int month, out int year) 
+        => (day, month, year) = (date.Day, date.Month, date.Year);
+}
+```
+
+Example usage
+
+```csharp
+var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
+
+date.Deconstruct(out int day, out int month, out int year);
+
+Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
+```
+
+This means a developer who works with dates can have cleaner code.
+
 ## Basics
 
 The following shows different ways to return data from a method.
@@ -415,4 +447,14 @@ namespace ForWritingArticle.Classes
 
 - If using a framework prior to 4.8, you will need the following NuGet package [System.ValueTuple](https://www.nuget.org/packages/System.ValueTuple), otherwise the package is included in new projects
 
+# Credits
 
+- DateTime extension Adam Storr [![](assets/Link_16x.png)](https://adamstorr.azurewebsites.net/blog/playing-with-csharp-7-deconstruct)
+
+# References
+
+- Quickstart guide for deconstructions (C# 7.0) [![](assets/Link_16x.png)](https://github.com/dotnet/roslyn/blob/main/docs/features/deconstruction.md)
+- C# 10: Mix declarations and expressions in a deconstruction [![](assets/Link_16x.png)](https://anthonygiretti.com/2021/07/23/introducing-c-10-mix-declarations-and-expressions-in-a-deconstruction/)
+- JetBrains Rider Generate Deconstructors [![](assets/Link_16x.png)](https://www.jetbrains.com/help/rider/Code_Generation_Deconstructors.html)
+- Using Tuples in C# to Initialize Properties in the Constructor and to Deconstruct Your Object [![](assets/Link_16x.png)](https://www.thomasclaudiushuber.com/2021/03/25/csharp-using-tuples-to-initialize-properties/)
+- Avoid C# 9 Record Gotchas [![](assets/Link_16x.png)](https://khalidabuhakmeh.com/avoid-csharp-9-record-gotchas)

@@ -19,8 +19,9 @@ namespace ForWritingArticle
             //DictionaryExamples.PeopleOptions();
             //await BookOperations.GroupBooks();
             //await NorthOperations.NorthCustomers();
-            ;
-            Operations.PeopleDeconstruct();
+            
+            //Operations.PeopleDeconstruct();
+            Operations.DeconstructDateTimeOffset();
 
             Console.ReadLine();
         }

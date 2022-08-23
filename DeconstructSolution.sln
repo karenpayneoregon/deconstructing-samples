@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entity Framework Core", "Entity Framework Core", "{1BC73AB0-95FA-4028-8CF1-775DCF947CAE}"
 EndProject
@@ -31,6 +31,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryConsoleApp", "DictionaryConsoleApp\DictionaryConsoleApp.csproj", "{534AB982-71BD-4979-AA6A-9327AE4363C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForWritingArticle", "ForWritingArticle\ForWritingArticle.csproj", "{095473AE-D835-4BFB-9C6F-42C47A5AB85F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp10", "csharp10", "{F2C4764C-C95E-4703-AA07-5BDDB2005BC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp_csharp10", "ConsoleApp_csharp10\ConsoleApp_csharp10.csproj", "{A8364E23-E3BB-49A6-BBDF-6D236BE26C02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +70,10 @@ Global
 		{095473AE-D835-4BFB-9C6F-42C47A5AB85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{095473AE-D835-4BFB-9C6F-42C47A5AB85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{095473AE-D835-4BFB-9C6F-42C47A5AB85F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8364E23-E3BB-49A6-BBDF-6D236BE26C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8364E23-E3BB-49A6-BBDF-6D236BE26C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8364E23-E3BB-49A6-BBDF-6D236BE26C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8364E23-E3BB-49A6-BBDF-6D236BE26C02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +85,7 @@ Global
 		{D782B406-6F06-4E2E-A330-8200B6131820} = {76166F0A-F452-4323-815B-1EE8DAE7902F}
 		{541F5B49-78C8-4BBA-A723-9BCBEA73C033} = {BDC01F94-415E-4AC0-941C-27EB2B43135A}
 		{534AB982-71BD-4979-AA6A-9327AE4363C2} = {D5A7E212-0A15-4062-9DC3-CC461AE386BA}
+		{A8364E23-E3BB-49A6-BBDF-6D236BE26C02} = {F2C4764C-C95E-4703-AA07-5BDDB2005BC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB38A9BB-4111-4C3D-904A-024C41E72373}

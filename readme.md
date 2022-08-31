@@ -45,6 +45,13 @@ date.Deconstruct(out int day, out int month, out int year);
 Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
 ```
 
+How about a `DateOnly`? Yes we can do this also along with `TimeOnly`
+
+```csharp
+public static void Deconstruct(this DateOnly date, out int day, out int month, out int year) =>
+    (day, month, year) = (date.Day, date.Month, date.Year);
+```
+
 This means a developer who works with dates can have cleaner code. But wait, why not a language extension method like below? Because this article focues on deconstructing :wink:
 
 ```csharp

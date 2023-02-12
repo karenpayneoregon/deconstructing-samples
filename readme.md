@@ -1,10 +1,13 @@
-![img](assets/csharpDeconstructing.png)
+ï»¿![img](assets/csharpDeconstructing.png)
 
 # Overview
 
-In this article with code samples provides additional ways to return data from methods, iterating foreach statements, how to work with date time objects to have cleaner code. An important consideration is every developer has their own style of coding and with that keep an open mind, if something learned looks inviting but not your style than modify the code to suite you’re or a team’s style.
+In this article with code samples provides additional ways to return data from methods, iterating foreach statements, how to work with date time objects to have cleaner code. An important consideration is every developer has their own style of coding and with that keep an open mind, if something learned looks inviting but not your style than modify the code to suite youâ€™re or a teamâ€™s style.
 
-# The art of Deconstructing
+> **Note**
+> Code was originally written using .NET 5 and has been updated to .NET 7. The only trick for this was to update EF Core 5 to EF Core 7 else some code would not function which was expected.
+
+## The art of Deconstructing
 
 What is deconstruct in C#?
 
@@ -195,14 +198,14 @@ else
 }
 ```
 
-Each of the above examples perform the same operations with varying ways to return data. The first should be avoided unless it’s never going to fail. To be honest, the second is what an uneducated coder might come up with and is not recommended. The final two are personal choices along with showing we can return information and name them like local variables.
+Each of the above examples perform the same operations with varying ways to return data. The first should be avoided unless itâ€™s never going to fail. To be honest, the second is what an uneducated coder might come up with and is not recommended. The final two are personal choices along with showing we can return information and name them like local variables.
 
 Suppose we want to simply check success and not access the exception in regards to the last example? We can use a [discard](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/discards).
 
 ![x](assets/discard.png)
 
 
-# Deconstructing non-tuples for classes/models 
+## Deconstructing non-tuples for classes/models 
 
 This feature is great, but it is actually not limited to just tuples - you can add deconstructors to all your classes. Using the following syntax we can return and deconstruct only the information needed for an operation. The benefit is not needing to return all properties of a model and that there may be several different operations needing different sets of data.
 
@@ -293,7 +296,7 @@ namespace DeconstructCodeSamples.Extensions
 }
 ```
 
-# Deconstucting other code
+## Deconstucting other code
 
 Let's look at a simple dictionary
 
@@ -336,7 +339,7 @@ foreach (var (name, age) in peopleDictionary.Select(x => (x.Key, x.Value)))
 
 :question: Which to use? the second example, it's clear and easy to read.
 
-# Dictionary/IGrouping deconstruct
+## Dictionary/IGrouping deconstruct
 
 In this example the model where the task is to group by price, Cheap, Medium and Expensive.
 
@@ -406,7 +409,7 @@ foreach ((string pricingCategory, IGrouping<string, Book> bookGrouping) in resul
 }
 ```
 
-# Records
+## Records
 
 We can deconstruct `records` also, given the following record `Deconstruct` provides us a way to return all information in a compact form.
 
@@ -462,15 +465,57 @@ namespace ForWritingArticle.Classes
 
 ---
 
-# Notes
+## Resharper
+
+Generate Deconstructors `ReSharper_GenerateDeconstructor`
+
+**Before generation**
+```csharp
+public class Version
+{
+    public int Major { get; }
+    public int Minor { get; }
+}
+```
+
+**After generation**
+```csharp
+public class Version
+{
+    public int Major { get; }
+    public int Minor { get; }
+
+    public void Deconstruct(out int major, out int minor)
+    {
+        major = this.Major;
+        minor = this.Minor;
+    }
+}
+```
+
+In the above example the developer may choice all properties or select only those they want.
+
+Like most of my Resharper shortcuts they have been changed from standard so I created a markdown file to remember them as from time to time I forget them but the following is available via a Visual Studio external tool.
+
+| Description        |   Shortcut    | Keyboard Reference
+|:------------- |:-------------|:-------------|
+|  Extract Interface| <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>G</kbd>| [ReSharper_ExtractInterface](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Interface.html) |
+|  Extract Superclass| <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>E</kbd> |[ReSharper_ExtractSuperclass](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Superclass.html) |
+|  Change Signature| <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>S</kbd>| [ReSharper_ChangeSignature](https://www.jetbrains.com/help/resharper/Refactorings__Change_Signature.html) |
+|  Convert Anonymous to Named Type refactoring| <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>P</kbd> | [ReSharper_Anonymous2Declared](https://www.jetbrains.com/help/resharper/Refactorings__Convert_Anonymous_to_Named_Type.html) |
+| Extract Method refactoring | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>I</kbd> | [ReSharper_ExtractMethod](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Method.html) |
+| Generate Deconstructorsï»¿ | <kbd>ctrl</kbd> + <kbd>T</kbd> <kbd>Y</kbd> | [ReSharper_GenerateDeconstructor](https://www.jetbrains.com/help/resharper/Code_Generation_Deconstructors.html) |
+
+
+## Notes
 
 - If using a framework prior to 4.8, you will need the following NuGet package [System.ValueTuple](https://www.nuget.org/packages/System.ValueTuple), otherwise the package is included in new projects
 
-# Credits
+## Credits
 
 - DateTime extension Adam Storr [![](assets/Link_16x.png)](https://adamstorr.azurewebsites.net/blog/playing-with-csharp-7-deconstruct)
 
-# References
+## References
 
 - Quickstart guide for deconstructions (C# 7.0) [![](assets/Link_16x.png)](https://github.com/dotnet/roslyn/blob/main/docs/features/deconstruction.md)
 - C# 10: Mix declarations and expressions in a deconstruction [![](assets/Link_16x.png)](https://anthonygiretti.com/2021/07/23/introducing-c-10-mix-declarations-and-expressions-in-a-deconstruction/)

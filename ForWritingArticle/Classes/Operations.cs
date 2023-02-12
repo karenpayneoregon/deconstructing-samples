@@ -4,6 +4,7 @@ using Bogus;
 using ForWritingArticle.LanguageExtensions;
 using static System.DateTime;
 using Person = ForWritingArticle.Models.Person;
+// ReSharper disable RedundantAssignment
 
 namespace ForWritingArticle.Classes
 {
@@ -43,26 +44,56 @@ namespace ForWritingArticle.Classes
 
         public static void DeconstructDateTimeOffset()
         {
-            var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
 
-            date.Deconstruct(out int day, out int month, out int year);
 
-            Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
+            var date = new DateTimeOffset(
+                Now.Year,
+                Now.Month,
+                Now.Day,
+                0, 0,
+                0, 0,
+                new TimeSpan(
+                    -7, 0, 0));
+
+            var (day, month, year, offset) = date;
+
+            Console.WriteLine($"{month}/{day}/{year} {offset}");
 
         }
+
+        public static void DeconstructVersion()
+        {
+            Version version = new Version(12, 0, 1, 1);
+
+            var (major, minor, build, revision) = version;
+        }
+
+        public static void MixingDeclarationAndAssignment()
+        {
+                string city = "Raleigh";
+                int population = 458880;
+
+                (city, population, double area) = QueryCityData("New York City");
+
+                Console.WriteLine();
+
+        }
+        private static (string, int, double) QueryCityData(string name) 
+            => name == "New York City" ? (name, 8175133, 468.48) : ("", 0, 0);
+
 
         public static void ChunkDateTimeOffset()
-        {
-            var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
-            var (day, month, year) = date.Chunk();
-            Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
-        }
-
-        public static void BreakOutDateParts()
-        {
-            var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
-            int year = date.Year;
-            Console.WriteLine($"Year: {date.Year} Month: {date.Month} Day: {date.Day}");
-        }
+    {
+        var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
+        var (day, month, year) = date.Chunk();
+        Console.WriteLine($"Year: {year} Month: {month} Day: {day}");
     }
+
+    public static void BreakOutDateParts()
+    {
+        var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, TimeSpan.Zero);
+        int year = date.Year;
+        Console.WriteLine($"Year: {date.Year} Month: {date.Month} Day: {date.Day}");
+    }
+}
 }

@@ -21,7 +21,7 @@ namespace ForWritingArticle
             //await NorthOperations.NorthCustomers();
             
             //Operations.PeopleDeconstruct();
-            //Operations.DeconstructDateTimeOffset();
+            Operations.MixingDeclarationAndAssignment();
             Operations.ChunkDateTimeOffset();
 
             Console.ReadLine();

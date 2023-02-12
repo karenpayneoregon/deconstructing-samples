@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeconstructCodeSamples.Models
+namespace DeconstructCodeSamples.Models;
+
+public class CustomerItem
 {
-    public class CustomerItem
-    {
-        public int CustomerIdentifier { get; set; }
-        public string CompanyName { get; set; }
-        public override string ToString() => CompanyName;
-    }
+    public int CustomerIdentifier { get; set; }
+    public string CompanyName { get; set; }
+    public override string ToString() => CompanyName;
 }

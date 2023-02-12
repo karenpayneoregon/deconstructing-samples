@@ -24,7 +24,7 @@ namespace ForWritingArticle
 
 
             AnsiConsole.Write(
-                new Panel(grid)
+                new Spectre.Console.Panel(grid)
                     .Header("About"));
 
         }

@@ -12,7 +12,7 @@ using DeconstructCodeSamples.Classes;
 using DeconstructCodeSamples.Extensions;
 using DeconstructCodeSamples.Models;
 using Newtonsoft.Json;
-using SomeThirdPartyLibrary.Classes;
+using SomeThirdPartyLibrary.Models;
 
 namespace DeconstructCodeSamples
 {

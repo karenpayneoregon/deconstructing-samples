@@ -1,54 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DictionaryConsoleApp.Models;
+﻿using DictionaryConsoleApp.Models;
 using Microsoft.Extensions.Configuration;
 using Spectre.Console;
 
-namespace DictionaryConsoleApp
+namespace DictionaryConsoleApp;
+
+partial class Program
 {
-    partial class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
-            var configuration = builder.Build();
+        var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+        var configuration = builder.Build();
 
-            Recipient[] recipients = configuration.GetSection("Recipients").Get<Recipient[]>();
+        Recipient[] recipients = configuration.GetSection("Recipients").Get<Recipient[]>();
             
-            Dictionary<string, Recipient> dictionary = recipients.ToDictionary(recipient => 
-                recipient.Data.ShortName, recipient => recipient);
+        Dictionary<string, Recipient> dictionary = recipients.ToDictionary(recipient => 
+            recipient.Data.ShortName, recipient => recipient);
 
-            // conventional
-            AnsiConsole.MarkupLine("[cyan]Conventional[/]");
-            foreach (KeyValuePair<string, Recipient> recipient in dictionary)
+        // conventional
+        AnsiConsole.MarkupLine("[cyan]Conventional[/]");
+        foreach (KeyValuePair<string, Recipient> recipient in dictionary)
+        {
+            Console.WriteLine(recipient.Key);
+            foreach (Unit unit in recipient.Value.Data.Units)
             {
-                Console.WriteLine(recipient.Key);
-                foreach (Unit unit in recipient.Value.Data.Units)
-                {
-                    Console.WriteLine($"\t{unit.UnitName,-4}{string.Join(",", unit.Details)}");
-                }
+                Console.WriteLine($"\t{unit.UnitName,-4}{string.Join(",", unit.Details)}");
             }
-
-            AnsiConsole.WriteLine();
-            // deconstruct 
-            AnsiConsole.MarkupLine("[cyan]Deconstruct[/]");
-            foreach ((string name, Recipient recipient) in dictionary)
-            {
-                Console.WriteLine(name);
-                foreach (Unit unit in recipient.Data.Units)
-                {
-                    Console.WriteLine($"\t{unit.UnitName,-4}{string.Join(",", unit.Details)}");
-                }
-            }
-
-            AnsiConsole.WriteLine();
-            AnsiConsole.MarkupLine("Press any [b]key[/] to close");
-            Console.ReadLine();
-
         }
+
+        AnsiConsole.WriteLine();
+        // deconstruct 
+        AnsiConsole.MarkupLine("[cyan]Deconstruct[/]");
+        foreach ((string name, Recipient recipient) in dictionary)
+        {
+            Console.WriteLine(name);
+            foreach (Unit unit in recipient.Data.Units)
+            {
+                Console.WriteLine($"\t{unit.UnitName,-4}{string.Join(",", unit.Details)}");
+            }
+        }
+
+        AnsiConsole.WriteLine();
+        AnsiConsole.MarkupLine("Press any [b]key[/] to close");
+        Console.ReadLine();
+
     }
-    
-
-
 }

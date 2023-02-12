@@ -4,29 +4,28 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace DeconstructCodeSamples.Classes
+namespace DeconstructCodeSamples.Classes;
+
+public class JsonHelpers
 {
-    public class JsonHelpers
+
+    /// <summary>
+    /// List of T from file
+    /// </summary>
+    /// <typeparam name="T">Type to deserialize</typeparam>
+    /// <param name="fileName">Read from file</param>
+    /// <returns><see cref="ValueTuple"/> of list and <see cref="Exception"/></returns>
+    public static (List<T>, Exception) JsonToList<T>(string fileName)
     {
-
-        /// <summary>
-        /// List of T from file
-        /// </summary>
-        /// <typeparam name="T">Type to deserialize</typeparam>
-        /// <param name="fileName">Read from file</param>
-        /// <returns><see cref="ValueTuple"/> of list and <see cref="Exception"/></returns>
-        public static (List<T>, Exception) JsonToList<T>(string fileName)
+        try
         {
-            try
-            {
-                return (JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(fileName)), null);
-            }
-            catch (Exception exception)
-            {
-                return (null, exception);
-            }
-
+            return (JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(fileName)), null);
         }
-       
+        catch (Exception exception)
+        {
+            return (null, exception);
+        }
+
     }
+       
 }

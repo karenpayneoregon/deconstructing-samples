@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Switches.Data.Configurations;
 using Switches.Models;
 using System;
+using static ConfigurationLibrary.Classes.ConfigurationHelper;
 #nullable disable
 
 #nullable disable
@@ -36,7 +37,9 @@ namespace Switches.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=School;Integrated Security=True");
+                optionsBuilder
+                    .UseSqlServer(ConnectionString())
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             }
         }
 

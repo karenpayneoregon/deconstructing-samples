@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Bogus;
 using ForWritingArticle.LanguageExtensions;
 using static System.DateTime;
@@ -58,6 +59,25 @@ namespace ForWritingArticle.Classes
             var (day, month, year, offset) = date;
 
             Console.WriteLine($"{month}/{day}/{year} {offset}");
+
+            var test = TimeZoneInfo.ConvertTimeToUtc(date.DateTime, TimeZoneInfo.Local);
+
+            ShowPossibleTimeZones(date);
+        }
+
+        private static void ShowPossibleTimeZones(DateTimeOffset offsetTime)
+        {
+            TimeSpan offset = offsetTime.Offset;
+            Console.WriteLine("{0} could belong to the following time zones:", offsetTime.ToString());
+            ReadOnlyCollection<TimeZoneInfo> timeZones = TimeZoneInfo.GetSystemTimeZones();
+            foreach (TimeZoneInfo timeZone in timeZones)
+            {
+                if (timeZone.GetUtcOffset(offsetTime.DateTime).Equals(offset))
+                {
+                    Console.WriteLine("   {0}", timeZone.DisplayName);
+                }
+            }
+
 
         }
 

@@ -19,11 +19,11 @@ namespace ForWritingArticle
             //DictionaryExamples.PeopleOptions();
             //await BookOperations.GroupBooks();
             //await NorthOperations.NorthCustomers();
-            
-            //Operations.PeopleDeconstruct();
-            Operations.MixingDeclarationAndAssignment();
-            Operations.ChunkDateTimeOffset();
 
+            //Operations.PeopleDeconstruct();
+            //Operations.MixingDeclarationAndAssignment();
+            //Operations.DeconstructDateTimeOffset();
+            Examples.DictionaryExample();
             Console.ReadLine();
         }
 

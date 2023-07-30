@@ -7,12 +7,19 @@
 		<ApplicationIcon>csharp.ico</ApplicationIcon>
 	</PropertyGroup>-->
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net7.0-windows</TargetFramework>
 		<Nullable>disable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>-->
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

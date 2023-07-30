@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using ForWritingArticle.Classes;
 using Spectre.Console;
 using W = ConsoleHelperLibrary.Classes.WindowUtility;
 
@@ -8,13 +9,16 @@ namespace ForWritingArticle
 {
     partial class Program
     {
-        [ModuleInitializer]
+        
+        //[ModuleInitializer]
         public static void Init()
         {
 
+
+
             //W.SetConsoleWindowPosition(W.AnchorWindow.Center);
             //Console.Title = "Code samples for write-ups";
-            
+
             //var grid = new Grid()
             //    .AddColumn(new GridColumn().NoWrap().PadRight(4))
             //    .AddRow("[yellow]1[/] In the [b]Main method[/] in [b]Program[/], comment out one line at a time")

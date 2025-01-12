@@ -133,7 +133,7 @@ namespace WindowsFormsCodeSamples
 
             if (exception is null)
             {
-                var (firstName, lastName) = persons.FirstOrDefault();
+                var (firstName, lastName) = persons.FirstOrDefault()!;
                 Dialogs.Information(this, $"First person: {firstName} {lastName}");
             }
             else

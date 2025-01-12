@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace WindowsFormsCodeSamples.Classes
 {
@@ -86,18 +80,25 @@ namespace WindowsFormsCodeSamples.Classes
                 return (null, exception);
             }
 
-            return (customerDataTable, null);
+            return (customerDataTable, null)!;
 
         }
 
         /// <summary>
-        /// Shared select query
+        /// Gets the SQL query string used to retrieve customer data with joins.
         /// </summary>
-        private static string _selectCustomersWithJoinsQuery => 
-            "SELECT C.CustomerIdentifier, C.CompanyName, C.ContactId, CT.ContactTitle, CN.FirstName, CN.LastName, C.Street, C.City, C.PostalCode, C.CountryIdentifier, C.Phone, C.ContactTypeIdentifier, CO.Name AS CountryName " + 
-            "FROM Customers AS C " + 
-            "INNER JOIN ContactType AS CT ON C.ContactTypeIdentifier = CT.ContactTypeIdentifier " + 
-            "INNER JOIN Countries   AS CO ON C.CountryIdentifier = CO.CountryIdentifier " + 
-            "INNER JOIN Contacts    AS CN ON C.ContactId = CN.ContactId AND CT.ContactTypeIdentifier = CN.ContactTypeIdentifier";
+        /// <remarks>
+        /// This query joins the Customers, ContactType, Countries, and Contacts tables to 
+        /// retrieve detailed customer information, including identifiers, company name, 
+        /// contact details, address, and country name.
+        /// </remarks>
+        private static string _selectCustomersWithJoinsQuery =>
+            """
+            SELECT C.CustomerIdentifier, C.CompanyName, C.ContactId, CT.ContactTitle, CN.FirstName, CN.LastName, C.Street, C.City, C.PostalCode, C.CountryIdentifier, C.Phone, C.ContactTypeIdentifier, CO.Name AS CountryName 
+            FROM Customers AS C 
+            INNER JOIN ContactType AS CT ON C.ContactTypeIdentifier = CT.ContactTypeIdentifier 
+            INNER JOIN Countries   AS CO ON C.CountryIdentifier = CO.CountryIdentifier 
+            INNER JOIN Contacts    AS CN ON C.ContactId = CN.ContactId AND CT.ContactTypeIdentifier = CN.ContactTypeIdentifier
+            """;
     }
 }

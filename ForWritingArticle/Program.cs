@@ -23,7 +23,8 @@ namespace ForWritingArticle
             //Operations.PeopleDeconstruct();
             //Operations.MixingDeclarationAndAssignment();
             //Operations.DeconstructDateTimeOffset();
-            Examples.DictionaryExample();
+            //Examples.DictionaryExample();
+            QuestionOfTheDay.Which();
             Console.ReadLine();
         }
 

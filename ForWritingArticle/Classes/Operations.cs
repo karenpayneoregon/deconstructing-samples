@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Bogus;
 using ForWritingArticle.LanguageExtensions;
 using static System.DateTime;
@@ -47,14 +45,7 @@ namespace ForWritingArticle.Classes
         {
 
 
-            var date = new DateTimeOffset(
-                Now.Year,
-                Now.Month,
-                Now.Day,
-                0, 0,
-                0, 0,
-                new TimeSpan(
-                    -7, 0, 0));
+            var date = new DateTimeOffset(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0, new TimeSpan(-7, 0, 0));
 
             var (day, month, year, offset) = date;
 
@@ -83,11 +74,19 @@ namespace ForWritingArticle.Classes
 
         public static void DeconstructVersion()
         {
-            Version version = new Version(12, 0, 1, 1);
+            Version version = new(12, 0, 1, 1);
 
             var (major, minor, build, revision) = version;
         }
+        public static void ConventionalVersion()
+        {
+            Version version = new(12, 0, 1, 1);
 
+            var major = version.Major;
+            var minor = version.Minor;
+            var build = version.Build;
+
+        }
         public static void MixingDeclarationAndAssignment()
         {
                 string city = "Raleigh";

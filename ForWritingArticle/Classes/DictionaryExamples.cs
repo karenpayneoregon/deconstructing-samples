@@ -1,6 +1,6 @@
 ﻿namespace ForWritingArticle.Classes
 {
-    public class DictionaryExamples
+    public partial class DictionaryExamples
     {
         public static void PeopleOptions()
         {

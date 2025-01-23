@@ -29,6 +29,11 @@ namespace WindowsFormsCodeSamples
         {
             InitializeComponent();
             CustomersDataGridView.AutoGenerateColumns = false;
+
+            var buttons = 
+                this.DescendantControls<Button>()
+                    .Where(button => button.Text.StartsWith("Read"));
+
         }
 
         /// <summary>

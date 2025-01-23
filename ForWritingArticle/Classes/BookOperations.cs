@@ -27,9 +27,7 @@ namespace ForWritingArticle.Classes
                     > 10 and <= 20 => "Medium",
                     _ => "Expensive"
                 })
-                .ToDictionary(gb =>
-                        gb.Key,
-                    g => g);
+                .ToDictionary(gb => gb.Key, g => g);
 
 
             AnsiConsole.MarkupLine("[cyan]Conventional foreach[/]");

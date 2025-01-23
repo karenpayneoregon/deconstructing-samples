@@ -1,5 +1,5 @@
 ﻿namespace ForWritingArticle.Classes;
-internal class Examples
+public partial class DictionaryExamples
 {
     public static void DictionaryExample()
     {
@@ -18,14 +18,10 @@ internal class Examples
         }
     }
 
-    private static Dictionary<string, int> PeopleDictionary()
+    private static Dictionary<string, int> PeopleDictionary() => new()
     {
-        var peopleDictionary = new Dictionary<string, int>
-        {
-            ["Mary"] = 32,
-            ["Frank"] = 17,
-            ["Karen"] = 66
-        };
-        return peopleDictionary;
-    }
+        ["Mary"] = 32,
+        ["Frank"] = 17,
+        ["Karen"] = 66
+    };
 }

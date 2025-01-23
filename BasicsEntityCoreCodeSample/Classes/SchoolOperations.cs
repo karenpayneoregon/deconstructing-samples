@@ -15,9 +15,15 @@ public class SchoolOperations
     public static async Task<List<PersonEntity>> GetStudents()
     {
         await using var context = new SchoolContext();
-        var results = await context.Person.Select(Person.ListBoxSource).OrderBy(person => person.LastName).ToListAsync();
+        var results = await context.Person
+            .Select(Person.ListBoxSource)
+            .OrderBy(person => person.LastName)
+            .ToListAsync();
+
         string json = JsonConvert.SerializeObject(results, Formatting.Indented);
-        await File.WriteAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Students.json"), json);
+        await File.WriteAllTextAsync(
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Students.json"), json);
+
         return results;
     }
 

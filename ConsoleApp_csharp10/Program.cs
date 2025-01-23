@@ -18,16 +18,20 @@ internal partial class Program
 
         AnsiConsole.MarkupLine($"[b]Hello[/] [yellow]{firstname}[/] [cyan]{lastname}[/]");
 
-        var dateTimeOffset = new DateTimeOffset(2022, 9, 2, 0, 0, 0, 0, TimeSpan.Zero);
-        
-        
-        var (day, month, year) = dateTimeOffset;
+        {
+            DateTimeOffset dateTimeOffset = 
+                new(2022, 9, 2, 0, 0, 0, 0, TimeSpan.Zero);
+
+            var (day, month, year) = dateTimeOffset;
+        }
 
 
-        DateOnly dateOnly = new DateOnly(2022, 9, 2);
+        {
+            DateOnly dateOnly = new(2022, 9, 2);
+            
+            var (day, month, year) = dateOnly;
+        }
 
-
-        var (day1, month1, year1) = dateOnly;
 
 
         Console.ReadLine();
